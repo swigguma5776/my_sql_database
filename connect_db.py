@@ -13,7 +13,6 @@ def connect_db():
         'password' : os.environ.get('PASSWORD'), #type: ignore
         'host' : os.environ.get('HOST') #type: ignore
     }
-    print(dict)
 
     try: 
         # attempt to establish a connection
