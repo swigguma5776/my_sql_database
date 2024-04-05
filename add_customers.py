@@ -31,6 +31,6 @@ def create_customer(*customer):
             conn.close()
             print("MySQL connection closed")
     
-create_customer("Boba Fett", 'bbfett@gmail.com')  
+create_customer("Obi Wand", 'obiwan@gmail.com')  
  
     
