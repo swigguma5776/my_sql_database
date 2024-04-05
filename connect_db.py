@@ -1,15 +1,19 @@
 import mysql.connector
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-        
+   
         
 def connect_db():
     dict = {
-        'database' : 'ecommerce_db', # type: ignore
-        'user' : 'root', # type: ignore
-        'password' : 'Renae5776', #type: ignore
-        'host' : 'localhost' #type: ignore
+        'database' : os.environ.get('DATABASE'), # type: ignore
+        'user' : os.environ.get('USER'), # type: ignore
+        'password' : os.environ.get('PASSWORD'), #type: ignore
+        'host' : os.environ.get('HOST') #type: ignore
     }
+    print(dict)
 
     try: 
         # attempt to establish a connection
