@@ -1,24 +1,22 @@
 from connect_db import connect_db
-        
-            
-
-def create_customer(*customer):
 
 
+def fetch_customers():
+   
     # attempt to establish a connection
     conn = connect_db()
     if conn:
         try: 
             
-        
-                
-            query = "INSERT INTO Customer (name, email) VALUES(%s, %s)"
-            
             cursor = conn.cursor()
-            cursor.execute(query, customer)
-            conn.commit()
             
-            print(f"New Customer was successfully added")
+            # starting sql query to a variable
+            query = "SELECT * FROM Customer"
+            cursor.execute(query)
+            customers = cursor.fetchall()
+            
+            for row in customers:
+                print(row)
                 
                 
         except Exception as e:
@@ -30,7 +28,5 @@ def create_customer(*customer):
             if conn and conn.is_connected():
                 conn.close()
                 print("MySQL connection closed")
-    
-create_customer("Boba Fett", 'bbfett@gmail.com')  
- 
-    
+            
+fetch_customers()
