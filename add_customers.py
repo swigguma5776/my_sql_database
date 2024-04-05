@@ -1,11 +1,5 @@
 import mysql.connector
-
-dict = {
-    'database' : 'ecommerce_db', # type: ignore
-    'user' : 'root', # type: ignore
-    'password' : 'Renae5776', #type: ignore
-    'host' : 'localhost' #type: ignore
-}
+from connect_db import connect_db
         
         
 def customer_query():
@@ -13,11 +7,8 @@ def customer_query():
 
     try: 
         # attempt to establish a connection
-        conn = mysql.connector.connect(**dict)
+        conn = connect_db()
         
-        # check for successful connection
-        if conn.is_connected():
-            print(f"You have successfully connect to {dict['database']}")
         cursor = conn.cursor()
         
         # starting sql query to a variable
@@ -45,11 +36,9 @@ def create_customer(*customer):
 
     try: 
         # attempt to establish a connection
-        conn = mysql.connector.connect(**dict)
+        conn = connect_db()
         
-        # check for successful connection
-        if conn.is_connected():
-            print(f"You have successfully connect to {dict['database']}")
+       
             
         query = "INSERT INTO Customer (name, email) VALUES(%s, %s)"
         
@@ -70,6 +59,6 @@ def create_customer(*customer):
             conn.close()
             print("MySQL connection closed")
     
-create_customer("Henri Swiggum", 'henris@gmail.com')  
+create_customer("Boba Fett", 'bbfett@gmail.com')  
 customer_query()   
     
